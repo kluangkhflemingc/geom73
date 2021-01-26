@@ -14,6 +14,11 @@ print(len(shapefiles))
 shapefiles2 = arcpy.ListFeatureClasses()
 print(len(shapefiles2))
 
+excelfiles1 = arcpy.ListFiles("*.xlsx")
+excelfiles2 = arcpy.ListFiles("*.xls")
+allexcel = excelfiles1 + excelfiles2
+print(len(allexcel))
+
 #for shpFile in arcpy.ListFiles("*.shp"):
     #print(shpFile)
    

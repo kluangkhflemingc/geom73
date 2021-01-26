@@ -29,6 +29,8 @@ for excelFile in allexcel:
     numberRows = arcpy.management.GetCount(newTable)
     print(numberRows)
 
+arcpy.Delete_management(newTable)
+
 #for shpFile in arcpy.ListFiles("*.shp"):
     #print(shpFile)
    

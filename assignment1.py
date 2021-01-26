@@ -7,3 +7,8 @@ cwd = os.getcwd()
 inFolder = input("Enter the name of the input folder (ensure proper case and spelling): ")
 arcpy.env.workspace = cwd + "\\" + inFolder
 print(arcpy.env.workspace)
+
+for shpFile in arcpy.ListFiles("*.shp"):
+    print(shpFile)
+    print(len(shpFile))
+    print(list(shpFile))

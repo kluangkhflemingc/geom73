@@ -13,3 +13,7 @@ import arcpy
 # For each file: 
 # if shp report number of features
 # if table report total number of rows
+
+#Step 3:
+# if point file
+# list and return Property and Customer feilds

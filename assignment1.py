@@ -29,7 +29,20 @@ for excelFile in allexcel:
     numberRows = arcpy.management.GetCount(newTable)
     print(numberRows)
 
+#new files were not asked to be created, so new .dbf files are deleted
 arcpy.Delete_management(newTable)
+
+
+#fieldlist = arcpy.ListFields(“roads.shp”)
+for field in shapefiles:
+    desc = arcpy.Describe(shapefiles)
+    type = desc.shapeType
+    if type == "Point":
+	    print(field.Name)
+
+
+
+
 
 #for shpFile in arcpy.ListFiles("*.shp"):
     #print(shpFile)

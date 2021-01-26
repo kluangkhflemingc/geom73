@@ -14,7 +14,6 @@ print(len(shapefiles))
 shapefiles2 = arcpy.ListFeatureClasses()
 print(len(shapefiles2))
 
-for shpFile in arcpy.ListFiles("*.shp"):
-    print(shpFile)
-    print(len(shpFile))
-    print(list(shpFile))
+#for shpFile in arcpy.ListFiles("*.shp"):
+    #print(shpFile)
+   

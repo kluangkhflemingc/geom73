@@ -34,11 +34,12 @@ arcpy.Delete_management(newTable)
 
 
 #fieldlist = arcpy.ListFields(“roads.shp”)
-for field in shapefiles:
-    desc = arcpy.Describe(shapefiles)
-    type = desc.shapeType
-    if type == "Point":
-	    print(field.Name)
+for shapefile in shapefiles:
+    desc = arcpy.Describe(shapefile)
+    if desc.shapeType == "Point":
+        print(shapefile)
+        for field in desc.fields:
+            print(field.name)
 
 
 

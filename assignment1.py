@@ -6,6 +6,7 @@ import arcpy
 cwd = os.getcwd()
 inFolder = input("Enter the name of the input folder (ensure proper case and spelling): ")
 arcpy.env.workspace = cwd + "\\" + inFolder
+arcpy.env.overwriteOutput = True
 print(arcpy.env.workspace)
 
 shapefiles = arcpy.ListFiles("*.shp")

@@ -19,6 +19,10 @@ excelfiles2 = arcpy.ListFiles("*.xls")
 allexcel = excelfiles1 + excelfiles2
 print(len(allexcel))
 
+for shapefile in shapefiles:
+    numberFeatures = arcpy.GetCount_management(shapefile)
+    print(numberFeatures)
+
 #for shpFile in arcpy.ListFiles("*.shp"):
     #print(shpFile)
    

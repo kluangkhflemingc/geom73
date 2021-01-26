@@ -23,6 +23,11 @@ for shapefile in shapefiles:
     numberFeatures = arcpy.GetCount_management(shapefile)
     print(numberFeatures)
 
+for excelFile in allexcel:
+    newTable = arcpy.conversion.ExcelToTable(excelFile, excelFile)
+    numberRows = arcpy.management.GetCount(newTable)
+    print(numberRows)
+
 #for shpFile in arcpy.ListFiles("*.shp"):
     #print(shpFile)
    

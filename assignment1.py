@@ -8,6 +8,12 @@ inFolder = input("Enter the name of the input folder (ensure proper case and spe
 arcpy.env.workspace = cwd + "\\" + inFolder
 print(arcpy.env.workspace)
 
+shapefiles = arcpy.ListFiles("*.shp")
+print(len(shapefiles))
+
+shapefiles2 = arcpy.ListFeatureClasses()
+print(len(shapefiles2))
+
 for shpFile in arcpy.ListFiles("*.shp"):
     print(shpFile)
     print(len(shpFile))

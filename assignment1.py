@@ -1,6 +1,9 @@
 import os
-import arcpy 
-# Set the workspace environment to a relative path
-# Will work as long as CampgroundsData.gdb and AlgonquinCampgroundSelector.py are located in the same workspace folder
+import arcpy
+
+# Assumes that the input data and Python script are located in the same workspace (folder)
+# Hard code the workspace path if input data is located elsewhere
 cwd = os.getcwd()
-arcpy.env.workspace = cwd + r"\CampgroundsData.gdb"
+inFolder = input("Enter the name of the input folder (ensure proper case and spelling): ")
+arcpy.env.workspace = cwd + "\\" + inFolder
+print(arcpy.env.workspace)

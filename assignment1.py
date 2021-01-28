@@ -9,37 +9,42 @@ arcpy.env.workspace = cwd + "\\" + inFolder
 arcpy.env.overwriteOutput = True
 print(arcpy.env.workspace)
 
-shapefiles = arcpy.ListFiles("*.shp")
-print(len(shapefiles))
+# Create a list of all shapefiles
+allShapefiles = arcpy.ListFeatureClasses()
+print(len(allShapefiles))
 
-shapefiles2 = arcpy.ListFeatureClasses()
-print(len(shapefiles2))
+# Excel files can have the extension .xlsx or .xls
+# Create separate lists of Excel files with extension .xlsx and .xls
+excelfilesXLSX = arcpy.ListFiles("*.xlsx")
+excelfilesXLS = arcpy.ListFiles("*.xls")
 
-excelfiles1 = arcpy.ListFiles("*.xlsx")
-excelfiles2 = arcpy.ListFiles("*.xls")
-allexcel = excelfiles1 + excelfiles2
-print(len(allexcel))
+# Concatenate the lists of Excel files to create one list
+allExcelFiles = excelfilesXLSX + excelfilesXLS
+print(len(allExcelFiles))
 
-for shapefile in shapefiles:
-    numberFeatures = arcpy.GetCount_management(shapefile)
+for shapefile in allShapefiles:
+    numberFeatures = arcpy.management.GetCount(shapefile)
     print(numberFeatures)
 
-for excelFile in allexcel:
+for excelFile in allExcelFiles:
+    # Get Count tool only works with .csv, .dbf or .txt tables
+    # Convert all Excel files to .dbf tables to count the number of rows
     newTable = arcpy.conversion.ExcelToTable(excelFile, excelFile)
     numberRows = arcpy.management.GetCount(newTable)
     print(numberRows)
+    # New tables were not asked to be created, so new .dbf files are immediately deleted
+    arcpy.management.Delete(newTable)
 
-#new files were not asked to be created, so new .dbf files are deleted
-arcpy.Delete_management(newTable)
-
-
-#fieldlist = arcpy.ListFields(“roads.shp”)
-for shapefile in shapefiles:
+# Use a Describe object to determine whether the shapefile contains point features (geometry shape type = point)
+# List and report the field names and field type (data type) for each point shapefile
+# Checks every shapefile in the input folder
+for shapefile in allShapefiles:
     desc = arcpy.Describe(shapefile)
     if desc.shapeType == "Point":
         print(shapefile)
         for field in desc.fields:
             print(field.name)
+            print(field.type)
 
 
 

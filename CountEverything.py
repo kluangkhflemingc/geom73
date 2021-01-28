@@ -13,15 +13,18 @@ import arcpy
 # Assumes that the input data and Python script are located in the same workspace (folder)
 # Hard code the workspace path if input data is located elsewhere
 # requests program user enter in the folder to be the current workspace
+print()
 cwd = os.getcwd()
 inFolder = input("Enter the name of the input folder (ensure proper case and spelling): ")
 arcpy.env.workspace = cwd + "\\" + inFolder
 arcpy.env.overwriteOutput = True
-print(arcpy.env.workspace)
+print()
+print("Current workspace or folder: ", arcpy.env.workspace)
 
 # Create a list of all shapefiles
 allShapefiles = arcpy.ListFeatureClasses()
-print(len(allShapefiles))
+print()
+print("This folder contains:", len(allShapefiles), "shapefiles.")
 
 # Excel files can have the extension .xlsx or .xls
 # Create separate lists of Excel files with extension .xlsx and .xls
@@ -30,11 +33,14 @@ excelfilesXLS = arcpy.ListFiles("*.xls")
 
 # Concatenate the lists of Excel files to create one list
 allExcelFiles = excelfilesXLSX + excelfilesXLS
-print(len(allExcelFiles))
+print()
+print("This folder contains:", len(allExcelFiles), "Excel files.")
 
-# GetCount function used to determine total number of rows for the shapefile variable
+# GetCount function used to determine total number of rows for the shapefiles
+# found in the shapefile variable
 for shapefile in allShapefiles:
     numberFeatures = arcpy.management.GetCount(shapefile)
+    print()
     print(numberFeatures)
 
 for excelFile in allExcelFiles:

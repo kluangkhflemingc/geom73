@@ -1,8 +1,18 @@
+# File: CountEverything.py
+# Date: January 28 2021
+# Authors: Kristine Luangkhot & Jennifer Debono
+# Script to inventory data in a user specified folder
+# Inventory to include: 
+# Count and report the total number of files and type
+# Count and report the total number of rows or features for each file type
+# List and report the feilds of point shapefiles
+
 import os
 import arcpy
 
 # Assumes that the input data and Python script are located in the same workspace (folder)
 # Hard code the workspace path if input data is located elsewhere
+# requests program user enter in the folder to be the current workspace
 cwd = os.getcwd()
 inFolder = input("Enter the name of the input folder (ensure proper case and spelling): ")
 arcpy.env.workspace = cwd + "\\" + inFolder
@@ -22,6 +32,7 @@ excelfilesXLS = arcpy.ListFiles("*.xls")
 allExcelFiles = excelfilesXLSX + excelfilesXLS
 print(len(allExcelFiles))
 
+# GetCount function used to determine total number of rows for the shapefile variable
 for shapefile in allShapefiles:
     numberFeatures = arcpy.management.GetCount(shapefile)
     print(numberFeatures)
@@ -50,6 +61,5 @@ for shapefile in allShapefiles:
 
 
 
-#for shpFile in arcpy.ListFiles("*.shp"):
-    #print(shpFile)
+
    

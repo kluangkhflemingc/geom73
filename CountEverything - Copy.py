@@ -36,6 +36,7 @@ allExcelFiles = excelfilesXLSX + excelfilesXLS
 print()
 print("The folder {0} contains: {1} shapefiles and {2} Excel files.".format(inFolder, len(allShapefiles), len(allExcelFiles)))
 print()
+print()
 
 print("Number of rows in each file is as follows:")
 print("*********************************************************************************************************")
@@ -66,6 +67,9 @@ for excelFile in allExcelFiles:
 # List and report the field names and field type (data type) for each point shapefile
 # Checks every shapefile in the input folder
 print()
+print()
+print("Existing point shapefiles and fields:")
+print("*********************************************************************************************************")
 for shapefile in allShapefiles:
     desc = arcpy.Describe(shapefile)
     print()

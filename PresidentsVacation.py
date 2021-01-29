@@ -1,11 +1,8 @@
 # File: PresidentsVacation.py
 # Date: January 29 2021
 # Authors: Kristine Luangkhot & Jennifer Debono
-# Script to inventory data in a user specified folder
-# Inventory to include: 
-# Count and report the total number of files and type - Excel files and shapefiles only
-# Count and report the total number of rows or features for each file type
-# List and report the feilds of point shapefiles
+# Script to load georeferenced vacation photos into a new geodatabase
+# as a point feature class for viewing in ArcPro
 
 import os
 import arcpy

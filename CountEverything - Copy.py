@@ -78,7 +78,7 @@ for shapefile in allShapefiles:
         for field in desc.fields:
             print(field.name)
 
-#vt = arcpy.ValueTable(numberFeatures, fileNames)
+
 
 
 

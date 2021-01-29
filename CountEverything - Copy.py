@@ -34,20 +34,20 @@ excelfilesXLS = arcpy.ListFiles("*.xls")
 allExcelFiles = excelfilesXLSX + excelfilesXLS
 
 print()
-print("{0} contains: {1} shapefiles and {2} Excel files.".format(inFolder, len(allShapefiles), len(allExcelFiles)))
+print("The folder {0} contains: {1} shapefiles and {2} Excel files.".format(inFolder, len(allShapefiles), len(allExcelFiles)))
 print()
 
 print("Number of rows in each file is as follows:")
 print("*********************************************************************************************************")
 # Find the longest string name (file name) in the list of shapefiles for formatting purposes
 maxName = len(max(allShapefiles, key=len))
-print("{0: <{1}}\t\t{2: <{1}}".format('Shapefile Name', maxName, "Number of Features"))
+print("{0: <{1}}\t{2: <{1}}".format("Shapefile Name", maxName, "Number of Features"))
 # GetCount tool used to determine total number of rows for the shapefiles
 # found in the shapefile variable
 # Listing the number of rows for each file
 for shapefile in allShapefiles:
     numberFeatures = arcpy.management.GetCount(shapefile)
-    print("{0: <{1}}\t\t{2: <{1}}".format(shapefile, maxName, str(numberFeatures)))
+    print("{0: <{1}}\t{2: <{1}}".format(shapefile, maxName, str(numberFeatures)))
 
 print()
 # Find the longest string name (file name) in the list of Excel files for formatting purposes

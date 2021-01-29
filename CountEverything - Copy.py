@@ -62,16 +62,17 @@ for excelFile in allExcelFiles:
     # New tables were not asked to be created, so new .dbf files are immediately deleted
     arcpy.management.Delete(newTable)
 
-# # Use a Describe object to determine whether the shapefile contains point features (geometry shape type = point)
-# # List and report the field names and field type (data type) for each point shapefile
-# # Checks every shapefile in the input folder
-# for shapefile in allShapefiles:
-#     desc = arcpy.Describe(shapefile)
-#     if desc.shapeType == "Point":
-#         print(shapefile)
-#         for field in desc.fields:
-#             print(field.name)
-#             print(field.type)
+# Use a Describe object to determine whether the shapefile contains point features (geometry shape type = point)
+# List and report the field names and field type (data type) for each point shapefile
+# Checks every shapefile in the input folder
+print()
+for shapefile in allShapefiles:
+    desc = arcpy.Describe(shapefile)
+    print()
+    if desc.shapeType == "Point":
+        print(shapefile)
+        for field in desc.fields:
+            print(field.name)
 
 #vt = arcpy.ValueTable(numberFeatures, fileNames)
 

@@ -44,8 +44,8 @@ print("*************************************************************************
 maxName = len(max(allShapefiles, key=len))
 print("{0: <{1}}\t{2: <{1}}".format("Shapefile Name", maxName, "Number of Features"))
 # GetCount tool used to determine total number of rows for the shapefiles
-# found in the shapefile variable
-# Listing the number of rows for each file
+# found in the shapefile list
+# List and display the number of rows for each shapefile
 for shapefile in allShapefiles:
     numberFeatures = arcpy.management.GetCount(shapefile)
     print("{0: <{1}}\t{2: <{1}}".format(shapefile, maxName, str(numberFeatures)))
@@ -56,7 +56,7 @@ maxExcel = len(max(allExcelFiles, key=len))
 print("{0: <{1}}\t{2: <{1}}".format("Excel File Name", maxExcel, "Number of Rows"))
 for excelFile in allExcelFiles:
     # Get Count tool only works with .csv, .dbf or .txt tables
-    # Convert all Excel files to .dbf tables to count the number of rows
+    # Convert all Excel files to .dbf tables to count and display the number of rows
     newTable = arcpy.conversion.ExcelToTable(excelFile, excelFile)
     numberRows = arcpy.management.GetCount(newTable)
     print("{0: <{1}}\t{2: <{1}}".format(excelFile, maxExcel, str(numberRows)))
@@ -64,7 +64,7 @@ for excelFile in allExcelFiles:
     arcpy.management.Delete(newTable)
 
 # Use a Describe object to determine whether the shapefile contains point features (geometry shape type = point)
-# List and report the field names and field type (data type) for each point shapefile
+# List and report the field names for each point shapefile
 # Checks every shapefile in the input folder
 print()
 print()

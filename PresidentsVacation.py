@@ -2,7 +2,7 @@
 # Date: January 29 2021
 # Authors: Kristine Luangkhot & Jennifer Debono
 # Script to load georeferenced vacation photos into a new geodatabase
-# as a point feature class for viewing in ArcPro
+# as a point feature class for viewing in ArcGIS Pro
 
 import os
 import arcpy
@@ -11,7 +11,7 @@ import arcpy
 # Hard code the workspace path if input data is located elsewhere
 # requests program user enter in the folder to be the current workspace
 print()
-print("This script was made for Spatial Properties Inc. to view vacation photos using ArcGISPro.")
+print("This script was made for Spatial Properties Inc. to view vacation photos using ArcGIS Pro.")
 print()
 cwd = os.getcwd()
 inFolder = input("Enter the name of the folder with your photos (ensure proper case and spelling): ")
